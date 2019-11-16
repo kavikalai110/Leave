@@ -1,0 +1,51 @@
+
+  body {
+  font-family: "Lato", sans-serif;
+}
+.sidenav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 12%;
+  left: 0;
+  background-color: blue;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-style: solid; 
+  border-color: red;
+}
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.shadow {
+  width: 98%;
+  height: 30px;
+  padding: 14px;
+  background-color: #e6e6e6;
+  box-shadow: 7px 7px;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+/*input[type=button], input[type=submit], input[type=reset] :hover {
+  background-color: red;
+}*/
+.main {
+  margin-top: 3%;
+  margin-left: 220px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}

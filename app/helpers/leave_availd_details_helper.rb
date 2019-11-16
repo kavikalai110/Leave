@@ -1,0 +1,2 @@
+module LeaveAvaildDetailsHelper
+end

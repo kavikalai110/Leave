@@ -1,0 +1,63 @@
+<div class="float-right"><%=link_to 'Apply Leavekk' ,new_leave_availd_detail_path(current_user),:class => 'navbar-link'%></div><br />
+<div class="container">
+  <h2>Leave Balance</h2>           
+  <table class="table table-striped">
+    <thead>
+      
+      <tr>
+        <th>User Name</th>
+        <th>Leave Type</th>
+        <th>Total Leave</th>
+        <th>Leave Availd</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%if @emp_leave_balance%>
+    <%@emp_leave_balance.each do |balance|%>
+      <tr>
+        <td><%=balance.user.name%></td>
+        <td><%=balance.leave_type.name%></td>
+        <td><%=balance.total%></td>
+        <td><%=balance.leave_availd%></td>
+        <td><%=balance.balance%></td>
+      </tr>
+      <%end%><%end%>
+    </tbody>
+  </table>
+  <br /><br />
+  <h2>Applied Leaves</h2>
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Leave Type</th>
+        <th>From</th>
+        <th>To</th>
+        <th>No Of Days</th>
+        <th>Status</th>
+        <th>Manager</th>
+        <th>Reasion</th>
+        <th></th>
+      </tr>
+      </thead>
+      <%if @leave_availd%>
+      <%@leave_availd.each do |availd|%>
+      <tr>
+        <td><%=availd.user.name%></td>
+        <td><%=availd.leave_type.name%></td>
+        <td><%=availd.from_date%></td>
+        <td><%=availd.to_date%></td>
+        <td><%=availd.no_of_days%></td>
+        <td><%=availd.status%></td>
+        <td><%=User.where('rolls=?',true).first.name%></td>
+        <td><%=availd.reasion%></td>
+        <td><%=link_to 'Edit',edit_leave_availd_detail_path(availd.id)%></td>
+        <td><%=link_to 'Cancel',cancel_leave_leave_availd_detail_path(availd.id),:data => {:confirm => 'Are you sure?'}%></td>
+        
+      </tr>
+      <%end%><%end%>
+    </table>
+
+</div>
+

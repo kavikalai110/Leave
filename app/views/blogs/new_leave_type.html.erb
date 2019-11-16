@@ -1,0 +1,33 @@
+  <%= form_tag(:controller => "blogs", :action => "create")%>
+  <div class="container">           
+  <table>
+  	 <tr>
+        <td style="width: 200px">Name</td>
+        <td><%=text_field_tag :name%></td>
+     </tr>
+     <tr>
+     	<td>Total Days</td>
+     	<td><%=number_field_tag :total_leave,{min: 0, max: 30}%></td>
+     </tr>
+    </table>
+   </div>
+<%=submit_tag 'Create',:onclick=>'return check();'%>
+<script>
+  function check(){
+    
+    var name =document.getElementById("name").value;
+    var days =document.getElementById("total_leave").value;
+      if (name=="") {
+        alert("please Enter LeaveTypeName")
+        return false;
+      }
+      if (days=="") {
+        alert("Please Enter Total Days")
+        return false;
+      } 
+      if (days < 1) {
+        alert('Select Postive Numbers')
+        return false;
+      }
+  }
+</script>

@@ -1,0 +1,23 @@
+<%=link_to 'Create Leave Type',new_leave_type_blogs_path, :class => 'navbar-link'%>
+<div class="container">
+  <h2>Leave Types</h2>           
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Total Leave</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%@leave_type.each do |leave|%>
+      <tr>
+        <td><%=leave.name%></td>
+        <td><%=leave.status%></td>
+        <td><%=leave.total_leave%></td>
+        <td><%=link_to 'Delete',deleting_leave_type_blog_path(leave.id)%></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

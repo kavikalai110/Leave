@@ -1,0 +1,62 @@
+
+<%= form_tag updating_leave_availd_detail_path, :method => :post do %>
+<table>
+ 	<tr>
+ 		<td style="width: 140px">Leave Type</td>
+ 		<td>
+        <%#= select_tag :hobbies, options_for_select(LeaveType.all.collect { |e| [e.name,e.id]}),
+          {:include_blank => LeaveType.where(id: @leave_availd.first.leave_type).collect{ |l| [l.name,l.id]}} %>
+          <%=select_tag :hobbies,options_for_select(LeaveType.all.collect { |e| [e.name,e.id]}),:include_blank=>'Please Seletc LeaveType'%>
+ 		</td>
+ 	</tr>
+ 	<tr>
+ 		<td>From Date</td>
+ 		<td><%=text_field_tag :datepicker,@leave_availd.first.from_date%></td>
+ 	</tr>
+ 	<tr>
+        <td>To Date</td>
+        <td><%=text_field_tag :datepicker1,@leave_availd.first.to_date %></td>
+    </tr>
+         <td>Reasion</td>
+         <td><%=text_field_tag :reasion,@leave_availd.first.reasion%></td>
+    <tr> 
+    </tr>
+ </table>
+ <%=submit_tag 'Update',:onclick=>'return validation();'%>
+ <% end %>
+ <script>
+         $(document).ready(function () {
+         $('input[id$=datepicker]').datepicker({ dateFormat: 'yy-mm-dd'}).val();
+         $('input[id$=datepicker1]').datepicker({ dateFormat: 'yy-mm-dd'}).val();
+    });
+         function validation() {
+            var leave = document.getElementById('hobbies').value;
+            var from = document.getElementById('datepicker').value;
+            var to = document.getElementById('datepicker1').value;
+            var reasion = document.getElementById('reasion').value;
+            var a =new Date(Date.parse(from))
+            var b = new Date(Date.parse(to))
+            if (leave=="") {
+                alert('Please Select LeaveType')
+                return false;
+            }    
+            if(from=="") {
+             alert('Please select From Date')
+             return false;
+            } 
+            if(to=="") {
+             alert("Please select To Date")
+             return false;
+            }
+            if(+b < +a){
+             alert('From Date should less than To Date')
+             return false;
+            }
+            if (reasion==""){
+              alert('Please give reasion')
+              return false;
+            }
+
+            return true;
+         }
+ </script>

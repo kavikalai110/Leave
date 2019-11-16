@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Leave Request Detail</h2>           
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Leave Type</th>
+        <th>Total Days</th>
+        <th>From Date</th>
+        <th>TO Date</th>
+        <th>Reasion</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%if @leave_availd%>
+    <%@leave_availd.each do |l|%>
+      <tr>
+        
+        <td><%=l.user.name%></td>
+        <td><%=l.leave_type.name%></td>
+        <td><%=l.no_of_days%></td>
+        <td><%=l.from_date%></td>
+        <td><%=l.to_date%></td>
+        <td><%=l.reasion%></td>
+        <td><%=l.status%></td>
+        <td><%=link_to 'Approve',approval_leave_leave_availd_detail_path(l.id)%></td>
+        <td><%=link_to 'Reject',reject_leave_leave_availd_detail_path(l.id)%></td>
+         
+      </tr>
+      <%end%><%end%>
+    </tbody>
+  </table>
