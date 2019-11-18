@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%=f.label :Name%>
-    <%=f.name_field :name%>
+    <%=f.label :Name%><br />
+    <%=f.text_field :name%>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -35,7 +35,7 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
    <div class="field">
-     <%=f.lable :admin?%>
+     Admin?:
      <%=f.check_box :rolls%>
    </div>
   <div class="actions">
